@@ -77,6 +77,8 @@ text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Node" type="Node" parent="."]
+
 [connection signal="timeout" from="Timers/Shoot delay" to="." method="_on_shoot_delay_timeout"]
 [connection signal="timeout" from="Timers/Iframe" to="." method="_on_iframe_timeout"]
 [connection signal="timeout" from="Timers/Reload" to="." method="_on_reload_timeout"]

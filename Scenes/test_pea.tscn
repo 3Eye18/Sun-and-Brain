@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm8axos68jxo"]
+
+[ext_resource type="Texture2D" uid="uid://dly6gy0hs7if4" path="res://Resource/pea_head.png" id="1_qm184"]
+[ext_resource type="Texture2D" uid="uid://b8546rosx5lxg" path="res://Resource/pea_stalk.png" id="2_yvg56"]
+
+[node name="Node" type="CharacterBody2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(18, 62)
+texture = ExtResource("1_qm184")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(29, 30)
+texture = ExtResource("2_yvg56")

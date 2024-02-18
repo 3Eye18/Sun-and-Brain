@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd2c4auq6ei4n"]
+[gd_scene load_steps=5 format=3 uid="uid://dd2c4auq6ei4n"]
 
 [ext_resource type="PackedScene" uid="uid://ba0cpffe61x4v" path="res://Scenes/peashooter.tscn" id="1_0qnpv"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xvxt5"]
 [ext_resource type="PackedScene" uid="uid://bvpoooctjquuv" path="res://Scenes/zombie.tscn" id="2_65leq"]
-[ext_resource type="TileSet" uid="uid://hy5fdq83hlqi" path="res://assets/simple_tileset/simple_tileset.tres" id="4_pghuw"]
 
 [sub_resource type="Curve2D" id="Curve2D_gpwn5"]
 _data = {
@@ -19,11 +18,6 @@ zombie_scene = ExtResource("2_65leq")
 
 [node name="MobTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="TileMap" type="TileMap" parent="."]
-visible = false
-tile_set = ExtResource("4_pghuw")
-format = 2
 
 [node name="MobSpawnPath" type="Path2D" parent="."]
 position = Vector2(-36.6, 0)
