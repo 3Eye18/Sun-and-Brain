@@ -10,6 +10,7 @@ radius = 12.0
 top_level = true
 light_mask = 0
 visibility_layer = 2
+z_index = 1
 script = ExtResource("1_cxa2l")
 metadata/_edit_group_ = true
 

@@ -1,5 +1,5 @@
 # Idle.gd
-extends PlayerState
+extends State
 
 
 func physics_update(delta: float) -> void:

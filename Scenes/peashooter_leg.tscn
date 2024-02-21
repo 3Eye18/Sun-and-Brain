@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck4lbg0m2f8uy"]
+
+[ext_resource type="Script" path="res://Scripts/peashooter_leg.gd" id="1_2jh42"]
+[ext_resource type="Texture2D" uid="uid://b8546rosx5lxg" path="res://Resource/pea_stalk.png" id="2_htim2"]
+[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="3_xm8ip"]
+[ext_resource type="Script" path="res://Scripts/state_leg_idle.gd" id="4_rvyrt"]
+[ext_resource type="Script" path="res://Scripts/state_leg_moving.gd" id="5_51ymc"]
+[ext_resource type="PackedScene" uid="uid://6q2t4f6hcvwa" path="res://Scenes/peashooter_head.tscn" id="6_12a1b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7y580"]
+radius = 128.098
+
+[node name="Leg" type="CharacterBody2D"]
+position = Vector2(191, 172)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_2jh42")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-13, 114)
+texture = ExtResource("2_htim2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 114)
+shape = SubResource("CircleShape2D_7y580")
+debug_color = Color(0.054902, 1, 0.105882, 0.419608)
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("3_xm8ip")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("4_rvyrt")
+
+[node name="Moving" type="Node" parent="State Machine"]
+script = ExtResource("5_51ymc")
+
+[node name="Head" parent="." instance=ExtResource("6_12a1b")]
+position = Vector2(-30, -13.3333)
+scale = Vector2(0.9, 0.9)

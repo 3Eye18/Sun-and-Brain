@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dhs2qjocyoamx" path="res://Scenes/pea.tscn" id="2_oliai"]
 [ext_resource type="Texture2D" uid="uid://b482e8jqcukuj" path="res://Resource/kisspng-plants-vs-zombies-2-it-s-about-time-plants-vs-z-plants-vs-zombies-5ac085195fc079.1940394715225664253922.png" id="3_h2sq8"]
 [ext_resource type="Script" path="res://Scripts/state_machine.gd" id="4_q25ao"]
-[ext_resource type="Script" path="res://Scripts/state_idle.gd" id="5_hkqy1"]
-[ext_resource type="Script" path="res://Scripts/state_moving.gd" id="6_ejj5g"]
+[ext_resource type="Script" path="res://Scripts/state_leg_moving.gd" id="5_h1qle"]
+[ext_resource type="Script" path="res://Scripts/state_leg_idle.gd" id="6_nby7q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tt601"]
 radius = 31.0161
@@ -16,6 +16,9 @@ bg_color = Color(0.145098, 0.721569, 0, 1)
 [node name="Peashooter" type="CharacterBody2D" groups=["Friendly"]]
 script = ExtResource("1_xtd6f")
 pea_scene = ExtResource("2_oliai")
+health = null
+speed = null
+max_bullet = null
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 37)
@@ -51,11 +54,11 @@ wait_time = 3.0
 script = ExtResource("4_q25ao")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="State Machine"]
-script = ExtResource("5_hkqy1")
-
 [node name="Moving" type="Node" parent="State Machine"]
-script = ExtResource("6_ejj5g")
+script = ExtResource("5_h1qle")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("6_nby7q")
 
 [node name="Health Bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true

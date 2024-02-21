@@ -21,7 +21,7 @@ window/size/viewport_height=980
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/github_to_itch/plugin.cfg")
+enabled=PackedStringArray()
 
 [github_to_itch]
 
