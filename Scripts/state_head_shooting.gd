@@ -14,5 +14,10 @@ func physics_update(delta: float) -> void:
 		# Spawn the pea by adding it to the Peashooter scene.
 		owner.add_child(pea)
 		
-		if Input.is_action_just_released("primary_shot"):
+		if owner.bullet_count > 0:
 			state_machine.transition_to("Idle")
+		else:
+			get_node("%Reload").start()
+			state_machine.transition_to("Reloading")
+		
+		

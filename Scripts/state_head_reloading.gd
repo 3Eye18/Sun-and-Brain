@@ -1,11 +1,9 @@
-extends Node
+extends State
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func physics_update(delta: float) -> void:
+	owner.can_shoot = false
+	
+	if owner.bullet_count > 0:
+		owner.can_shoot = true
+		state_machine.transition_to("Idle")

@@ -6,6 +6,12 @@ class_name PeashooterHead
 var bullet_count: float
 var can_shoot: bool = true
 
+
+func _ready():
+	bullet_count = max_bullet
+	$"Bullet number".text = str(bullet_count)
+
+
 func _physics_process(delta):
 	var mouse_position = get_global_mouse_position()
 	var mouse_direction = (mouse_position - self.global_position).normalized()
@@ -14,7 +20,15 @@ func _physics_process(delta):
 		$Sprite2D.flip_v = false
 	else:
 		$Sprite2D.flip_v = true
+	$"Bullet number".text = str(bullet_count)
 
 
 func _on_shoot_delay_timeout():
 	can_shoot = true
+
+
+func _on_reload_timeout():
+	can_shoot = true
+	bullet_count = max_bullet
+	
+	

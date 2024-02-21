@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6q2t4f6hcvwa"]
+[gd_scene load_steps=8 format=3 uid="uid://6q2t4f6hcvwa"]
 
 [ext_resource type="Script" path="res://Scripts/peashooter_head.gd" id="1_o515q"]
 [ext_resource type="Texture2D" uid="uid://dly6gy0hs7if4" path="res://Resource/pea_head.png" id="2_sfw04"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/state_head_shooting.gd" id="5_ig2ct"]
 [ext_resource type="PackedScene" uid="uid://dhs2qjocyoamx" path="res://Scenes/pea.tscn" id="6_noqjc"]
 [ext_resource type="Script" path="res://Scripts/state_head_reloading.gd" id="7_lyyuy"]
-[ext_resource type="Script" path="res://Scripts/state_head_cooldown.gd" id="8_8id7m"]
 
 [node name="Head" type="CharacterBody2D"]
 position = Vector2(630, 500)
@@ -36,15 +35,27 @@ pea_scene = ExtResource("6_noqjc")
 [node name="Reloading" type="Node" parent="State Machine"]
 script = ExtResource("7_lyyuy")
 
-[node name="Cooldown" type="Node" parent="State Machine"]
-script = ExtResource("8_8id7m")
-
 [node name="Timers" type="Node" parent="."]
 
 [node name="Reload" type="Timer" parent="Timers"]
 unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
 
 [node name="Shoot delay" type="Timer" parent="Timers"]
 unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
 
+[node name="Bullet number" type="Label" parent="."]
+offset_left = -618.0
+offset_top = -480.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "ligma"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timers/Reload" to="." method="_on_reload_timeout"]
 [connection signal="timeout" from="Timers/Shoot delay" to="." method="_on_shoot_delay_timeout"]

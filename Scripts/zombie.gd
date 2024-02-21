@@ -4,7 +4,7 @@ var attack: AttackComponent
 @export var damage_point: float = 10
 @export var health: float = 100
 @export var speed: float = 100
-@onready var player = get_node("/root/Main/Player")
+@onready var player = get_node("/root/Main/Leg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

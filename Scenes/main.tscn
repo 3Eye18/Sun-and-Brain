@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd2c4auq6ei4n"]
 
-[ext_resource type="PackedScene" uid="uid://ba0cpffe61x4v" path="res://Scenes/peashooter.tscn" id="1_0qnpv"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xvxt5"]
 [ext_resource type="PackedScene" uid="uid://bvpoooctjquuv" path="res://Scenes/zombie.tscn" id="2_65leq"]
+[ext_resource type="PackedScene" uid="uid://ck4lbg0m2f8uy" path="res://Scenes/peashooter_leg.tscn" id="3_h1kid"]
 
 [sub_resource type="Curve2D" id="Curve2D_gpwn5"]
 _data = {
@@ -14,7 +14,9 @@ point_count = 6
 script = ExtResource("1_xvxt5")
 zombie_scene = ExtResource("2_65leq")
 
-[node name="Player" parent="." instance=ExtResource("1_0qnpv")]
+[node name="Leg" parent="." instance=ExtResource("3_h1kid")]
+
+[node name="Camera2D" type="Camera2D" parent="Leg"]
 
 [node name="MobTimer" type="Timer" parent="."]
 autostart = true
