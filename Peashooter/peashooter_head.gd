@@ -20,6 +20,7 @@ func _physics_process(delta):
 		$Sprite2D.flip_v = false
 	else:
 		$Sprite2D.flip_v = true
+		#%Marker2D.position.y = -%Marker2D.position.y   #Marker jumping bug
 	$"Bullet number".text = str(bullet_count)
 
 
@@ -28,7 +29,4 @@ func _on_shoot_delay_timeout():
 
 
 func _on_reload_timeout():
-	can_shoot = true
 	bullet_count = max_bullet
-	
-	

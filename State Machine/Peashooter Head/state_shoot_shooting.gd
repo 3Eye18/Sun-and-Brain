@@ -19,5 +19,3 @@ func physics_update(delta: float) -> void:
 		else:
 			get_node("%Reload").start()
 			state_machine.transition_to("Reloading")
-		
-		

@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbd6xnghixtyw"]
+
+[ext_resource type="Script" path="res://Peashooter/peashooter_head.gd" id="1_4ue8w"]
+[ext_resource type="Texture2D" uid="uid://dly6gy0hs7if4" path="res://Resource/pea_head.png" id="2_yminw"]
+[ext_resource type="Script" path="res://State Machine/state_machine.gd" id="3_2lyiu"]
+[ext_resource type="Script" path="res://State Machine/Peashooter Head/state_shoot_idle.gd" id="4_wiat1"]
+[ext_resource type="Script" path="res://State Machine/Peashooter Head/state_shoot_shooting.gd" id="5_1vufj"]
+[ext_resource type="PackedScene" uid="uid://dhs2qjocyoamx" path="res://Peashooter/pea.tscn" id="6_tlhb0"]
+[ext_resource type="Script" path="res://State Machine/Peashooter Head/state_shoot_reloading.gd" id="7_hdlh0"]
+
+[node name="Head" type="CharacterBody2D"]
+position = Vector2(630, 500)
+script = ExtResource("1_4ue8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+texture = ExtResource("2_yminw")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(255, -98)
+
+[node name="Bullet number" type="Label" parent="."]
+offset_left = -618.0
+offset_top = -480.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "ligma"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("3_2lyiu")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("4_wiat1")
+
+[node name="Shooting" type="Node" parent="State Machine"]
+script = ExtResource("5_1vufj")
+pea_scene = ExtResource("6_tlhb0")
+
+[node name="Reloading" type="Node" parent="State Machine"]
+script = ExtResource("7_hdlh0")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Reload" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="Shoot delay" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timers/Reload" to="." method="_on_reload_timeout"]
+[connection signal="timeout" from="Timers/Reload" to="State Machine/Reloading" method="_on_reload_timeout"]
+[connection signal="timeout" from="Timers/Shoot delay" to="." method="_on_shoot_delay_timeout"]

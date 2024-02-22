@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y74m4gknx47v"
-path="res://.godot/imported/Shooting state machine.png-5e991f3733c48f47ee3e774d5aabed51.ctex"
+uid="uid://cpejnv1bt7hwu"
+path="res://.godot/imported/TX Plant.png-dc8db0043fe1930778edd1c21e3961b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shooting state machine.png"
-dest_files=["res://.godot/imported/Shooting state machine.png-5e991f3733c48f47ee3e774d5aabed51.ctex"]
+source_file="res://Resource/Texture/TX Plant.png"
+dest_files=["res://.godot/imported/TX Plant.png-dc8db0043fe1930778edd1c21e3961b2.ctex"]
 
 [params]
 
