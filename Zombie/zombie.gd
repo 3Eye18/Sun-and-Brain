@@ -12,7 +12,7 @@ func _ready():
 
 
 func _process(delta):
-	for body in $"Attack-box".get_overlapping_bodies():
+	for body in $"Attack area".get_overlapping_bodies():
 		if body.is_in_group("Friendly"):
 			attack = AttackComponent.new()
 			attack.damage_point = damage_point

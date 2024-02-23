@@ -9,6 +9,10 @@ func physics_update(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	owner.velocity = direction * owner.speed
 	owner.move_and_slide()
+	if owner.velocity.x > 0:
+		$"../../Sprite2D".flip_h = false
+	elif owner.velocity.x < 0:
+		$"../../Sprite2D".flip_h = true
 
 	if owner.velocity == Vector2.ZERO:
 		state_machine.transition_to("Idle")

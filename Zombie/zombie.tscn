@@ -28,9 +28,9 @@ shape = SubResource("CircleShape2D_t1kp1")
 offset_right = 4.0
 offset_bottom = 27.0
 
-[node name="Attack-box" type="Area2D" parent="."]
+[node name="Attack area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack-box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack area"]
 position = Vector2(28, 91)
 shape = SubResource("CircleShape2D_2oqdq")
 debug_color = Color(0.901434, 0.232693, 0.525392, 0.419608)
