@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cbd6xnghixtyw"]
 
-[ext_resource type="Script" path="res://Peashooter/peashooter_head.gd" id="1_4ue8w"]
+[ext_resource type="Script" path="res://Player/Peashooter/peashooter_head.gd" id="1_4ue8w"]
 [ext_resource type="Texture2D" uid="uid://dly6gy0hs7if4" path="res://Resource/pea_head.png" id="2_yminw"]
 [ext_resource type="Script" path="res://State Machine/state_machine.gd" id="3_2lyiu"]
 [ext_resource type="Script" path="res://State Machine/Peashooter Head/state_shoot_idle.gd" id="4_wiat1"]
 [ext_resource type="Script" path="res://State Machine/Peashooter Head/state_shoot_shooting.gd" id="5_1vufj"]
-[ext_resource type="PackedScene" uid="uid://dhs2qjocyoamx" path="res://Peashooter/pea.tscn" id="6_tlhb0"]
+[ext_resource type="PackedScene" uid="uid://dhs2qjocyoamx" path="res://Player/Peashooter/pea.tscn" id="6_tlhb0"]
 [ext_resource type="Script" path="res://State Machine/Peashooter Head/state_shoot_reloading.gd" id="7_hdlh0"]
 
 [node name="Head" type="CharacterBody2D"]
@@ -54,7 +54,7 @@ one_shot = true
 
 [node name="Shoot delay" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.75
 one_shot = true
 
 [connection signal="timeout" from="Timers/Reload" to="." method="_on_reload_timeout"]

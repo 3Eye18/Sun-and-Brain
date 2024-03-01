@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4u5ok1pu8q5l"]
+
+[ext_resource type="Script" path="res://Tower/Peashooter/peashooter_tower.gd" id="1_lymwr"]
+[ext_resource type="Texture2D" uid="uid://b8546rosx5lxg" path="res://Resource/pea_stalk.png" id="1_m650n"]
+[ext_resource type="PackedScene" uid="uid://dhs2qjocyoamx" path="res://Player/Peashooter/pea.tscn" id="2_5bywt"]
+[ext_resource type="Texture2D" uid="uid://dly6gy0hs7if4" path="res://Resource/pea_head.png" id="2_rmlpk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_28kem"]
+radius = 124.064
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spdim"]
+radius = 2099.06
+
+[node name="Peashooter tower" type="StaticBody2D"]
+script = ExtResource("1_lymwr")
+pea_scene = ExtResource("2_5bywt")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_28kem")
+debug_color = Color(0.054902, 1, 0.105882, 0.419608)
+
+[node name="PeaHead" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-14, -133)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_rmlpk")
+
+[node name="Marker2D" type="Marker2D" parent="PeaHead"]
+position = Vector2(243.333, -96.6667)
+scale = Vector2(1.11111, 1.11111)
+
+[node name="PeaStalk" type="Sprite2D" parent="."]
+texture = ExtResource("1_m650n")
+
+[node name="Detection range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection range"]
+shape = SubResource("CircleShape2D_spdim")
+debug_color = Color(0.788235, 0.121569, 0.180392, 0.419608)
+
+[node name="Attack cooldown" type="Timer" parent="."]
+wait_time = 0.75
+
+[connection signal="timeout" from="Attack cooldown" to="." method="_on_attack_cooldown_timeout"]

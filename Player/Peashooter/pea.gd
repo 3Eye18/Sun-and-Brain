@@ -24,11 +24,16 @@ func _on_body_entered(body):
 		attack = AttackComponent.new()
 		attack.damage_point = damage_point
 		body.take_damage(attack)
-		
 		for bodies in $"Splash damage area".get_overlapping_bodies():
 			if bodies.is_in_group("Hostile"):
 				splash = AttackComponent.new()
 				splash.damage_point = splash_damage
 				bodies.take_damage(splash)
-		
+		queue_free()
+	elif body.is_in_group("Tile"):
+		for bodies in $"Splash damage area".get_overlapping_bodies():
+			if bodies.is_in_group("Hostile"):
+				splash = AttackComponent.new()
+				splash.damage_point = splash_damage
+				bodies.take_damage(splash)
 		queue_free()

@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhs2qjocyoamx"]
 
-[ext_resource type="Script" path="res://Peashooter/pea.gd" id="1_5n0q1"]
+[ext_resource type="Script" path="res://Player/Peashooter/pea.gd" id="1_5n0q1"]
 [ext_resource type="Texture2D" uid="uid://bdccj4whmaufu" path="res://Resource/AnyConv.com__ProjectilePea.png" id="2_ls70a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m3d23"]
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sivdp"]
-radius = 43.0
+radius = 126.016
 
 [node name="Pea" type="Area2D" groups=["Friendly"]]
 top_level = true
-light_mask = 0
 visibility_layer = 2
 z_index = 1
 texture_filter = 1

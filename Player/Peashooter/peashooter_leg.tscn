@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://5n1yvuc5xvcx"]
 
-[ext_resource type="Script" path="res://Peashooter/peashooter_leg.gd" id="1_qqlf3"]
+[ext_resource type="Script" path="res://Player/Peashooter/peashooter_leg.gd" id="1_qqlf3"]
 [ext_resource type="Texture2D" uid="uid://b8546rosx5lxg" path="res://Resource/pea_stalk.png" id="2_nishn"]
 [ext_resource type="Script" path="res://State Machine/state_machine.gd" id="3_xitce"]
 [ext_resource type="Script" path="res://State Machine/Peashooter Leg/state_move_idle.gd" id="4_ion1c"]
 [ext_resource type="Script" path="res://State Machine/Peashooter Leg/state_move_moving.gd" id="5_0n365"]
-[ext_resource type="PackedScene" uid="uid://cbd6xnghixtyw" path="res://Peashooter/peashooter_head.tscn" id="6_jqwhr"]
+[ext_resource type="PackedScene" uid="uid://cbd6xnghixtyw" path="res://Player/Peashooter/peashooter_head.tscn" id="6_jqwhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7y580"]
 radius = 128.098
