@@ -20,20 +20,13 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body.has_method("take_damage") and body.is_in_group("Hostile"):
+	for bodies in $"Splash damage area".get_overlapping_bodies():
+		if bodies.has_method("take_damage"):
+			splash = AttackComponent.new()
+			splash.damage_point = splash_damage
+			bodies.take_damage(splash)
+	if body.has_method("take_damage"):
 		attack = AttackComponent.new()
 		attack.damage_point = damage_point
 		body.take_damage(attack)
-		for bodies in $"Splash damage area".get_overlapping_bodies():
-			if bodies.is_in_group("Hostile"):
-				splash = AttackComponent.new()
-				splash.damage_point = splash_damage
-				bodies.take_damage(splash)
-		queue_free()
-	elif body.is_in_group("Tile"):
-		for bodies in $"Splash damage area".get_overlapping_bodies():
-			if bodies.is_in_group("Hostile"):
-				splash = AttackComponent.new()
-				splash.damage_point = splash_damage
-				bodies.take_damage(splash)
-		queue_free()
+	queue_free()

@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
 var attack: AttackComponent
+var player_entered: bool = false
+var target: Vector2
+@onready var state_machine = $"State Machine"
 @export var damage_point: float = 10
 @export var health: float = 100
 @export var speed: float = 100
-@onready var player = get_node("/root/Main/Leg")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,17 +16,10 @@ func _ready():
 
 func _process(delta):
 	for body in $"Attack area".get_overlapping_bodies():
-		if body.is_in_group("Friendly"):
+		if body.has_method("take_damage"):
 			attack = AttackComponent.new()
 			attack.damage_point = damage_point
 			body.take_damage(attack)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * speed
-	move_and_slide()
 
 
 func take_damage(attack: AttackComponent):
@@ -31,5 +27,3 @@ func take_damage(attack: AttackComponent):
 	$ProgressBar.value = health
 	if health <= 0:
 		queue_free()
-
-

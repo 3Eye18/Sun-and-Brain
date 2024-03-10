@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ac8ujo0tat8"
-path="res://.godot/imported/gardening-trees-for-small-gardens-flower-garden-tree-6cb54918070d66c03255db114da22292.png-81eea5edffd3e0a9c1216b455bbc3e0c.ctex"
+uid="uid://ds4vbgjr56ckd"
+path="res://.godot/imported/small pea (1).png-f5fa450b0ddfa74c30bfc795e16f2430.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resource/gardening-trees-for-small-gardens-flower-garden-tree-6cb54918070d66c03255db114da22292.png"
-dest_files=["res://.godot/imported/gardening-trees-for-small-gardens-flower-garden-tree-6cb54918070d66c03255db114da22292.png-81eea5edffd3e0a9c1216b455bbc3e0c.ctex"]
+source_file="res://Resource/small pea (1).png"
+dest_files=["res://.godot/imported/small pea (1).png-f5fa450b0ddfa74c30bfc795e16f2430.ctex"]
 
 [params]
 

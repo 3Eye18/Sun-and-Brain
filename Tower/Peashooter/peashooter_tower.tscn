@@ -12,6 +12,8 @@ radius = 124.064
 radius = 2099.06
 
 [node name="Peashooter tower" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 65
 script = ExtResource("1_lymwr")
 pea_scene = ExtResource("2_5bywt")
 metadata/_edit_group_ = true

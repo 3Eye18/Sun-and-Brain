@@ -16,6 +16,8 @@ bg_color = Color(0.054902, 1, 0.105882, 0.419608)
 [node name="Leg" type="CharacterBody2D" groups=["Friendly"]]
 position = Vector2(201, 171)
 scale = Vector2(0.3, 0.3)
+collision_layer = 4
+collision_mask = 67
 script = ExtResource("1_qqlf3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

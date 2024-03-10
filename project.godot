@@ -61,6 +61,16 @@ reload={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Moving zomb"
+2d_physics/layer_2="Zomb tower"
+2d_physics/layer_3="Moving plant"
+2d_physics/layer_4="Plant tower"
+2d_physics/layer_5="Zomb projectile"
+2d_physics/layer_6="Plant projectile"
+2d_physics/layer_7="Tile"
+
 [rendering]
 
 renderer/rendering_method="mobile"

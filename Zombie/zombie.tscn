@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvpoooctjquuv"]
+[gd_scene load_steps=9 format=3 uid="uid://bvpoooctjquuv"]
 
 [ext_resource type="Script" path="res://Zombie/zombie.gd" id="1_p1gi5"]
 [ext_resource type="Texture2D" uid="uid://b4s1txtfxqyad" path="res://Resource/2b8c74c0c35737217a4ef3d87e500457.png" id="2_m16xi"]
+[ext_resource type="Script" path="res://State Machine/state_machine.gd" id="3_74w86"]
+[ext_resource type="Script" path="res://State Machine/Zombie/zombie_idle.gd" id="4_ihku7"]
+[ext_resource type="Script" path="res://State Machine/Zombie/zombie_moving.gd" id="5_1ck0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1kp1"]
 radius = 50.9718
@@ -15,12 +18,15 @@ radius = 97.0
 [node name="Zombie" type="CharacterBody2D" groups=["Hostile"]]
 light_mask = 2
 scale = Vector2(0.8, 0.8)
+collision_mask = 76
 script = ExtResource("1_p1gi5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-27.5, -93.75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_m16xi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t1kp1")
@@ -33,7 +39,18 @@ offset_bottom = -214.5
 theme_override_styles/background = SubResource("StyleBoxFlat_vg42y")
 
 [node name="Attack area" type="Area2D" parent="."]
+collision_mask = 108
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack area"]
 shape = SubResource("CircleShape2D_2oqdq")
 debug_color = Color(0.901434, 0.232693, 0.525392, 0.419608)
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("3_74w86")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("4_ihku7")
+
+[node name="Moving" type="Node" parent="State Machine"]
+script = ExtResource("5_1ck0m")
