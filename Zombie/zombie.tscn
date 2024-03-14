@@ -20,6 +20,7 @@ light_mask = 2
 scale = Vector2(0.8, 0.8)
 collision_mask = 76
 script = ExtResource("1_p1gi5")
+speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-27.5, -93.75)
@@ -39,6 +40,7 @@ offset_bottom = -214.5
 theme_override_styles/background = SubResource("StyleBoxFlat_vg42y")
 
 [node name="Attack area" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 108
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack area"]

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
+
 var attack: AttackComponent
-var player_entered: bool = false
-var target: Vector2
-@onready var state_machine = $"State Machine"
+var player_entered_room: bool = false
+
 @export var damage_point: float = 10
 @export var health: float = 100
 @export var speed: float = 100

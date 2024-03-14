@@ -6,4 +6,3 @@ func physics_update(delta: float) -> void:
 	
 	if owner.player_entered_room == true:
 		state_machine.transition_to("Moving")
-

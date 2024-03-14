@@ -16,4 +16,3 @@ func _process(delta):
 func damage(damage_point):
 	if health_component:
 		health_component.take_damage(damage_point)
-	

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://damogl8ebivfk"]
+
+[ext_resource type="Texture2D" uid="uid://dqpxxh2au6lhc" path="res://Resource/Sun_PvZ2 (1).png" id="1_yyo2u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1oxa5"]
+radius = 37.0135
+
+[node name="Sun" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1oxa5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yyo2u")
