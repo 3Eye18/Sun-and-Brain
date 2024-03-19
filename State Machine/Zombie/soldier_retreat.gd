@@ -1,0 +1,13 @@
+extends State
+
+func physics_update(delta: float) -> void:
+	$"../../Marker2D/Gun/Timers/Attack cooldown".wait_time = 1
+	var direction = owner.player.global_position - owner.global_position
+	var new_velocity = -direction.normalized() * owner.speed
+	owner.velocity = new_velocity
+	owner.move_and_slide()
+
+	if owner.player_in_shoot_range and not owner.player_in_retreat_range:
+		state_machine.transition_to("Idle")
+	elif not owner.player_in_shoot_range:
+		state_machine.transition_to("Advance")

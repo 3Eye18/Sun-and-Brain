@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dj43jpnyoo4a"]
+[gd_scene load_steps=17 format=3 uid="uid://dj43jpnyoo4a"]
 
 [ext_resource type="Texture2D" uid="uid://cyr2kifw0i744" path="res://Resource/Texture/TX Tileset Grass.png" id="1_7h17k"]
 [ext_resource type="Texture2D" uid="uid://mcltueawybvd" path="res://Resource/Texture/TX Tileset Stone Ground.png" id="2_qu1ul"]
 [ext_resource type="Texture2D" uid="uid://bykq2bwo6bh4x" path="res://Resource/Texture/TX Tileset Wall.png" id="3_53q3y"]
 [ext_resource type="Script" path="res://Maps/Room Manager.gd" id="4_26rth"]
 [ext_resource type="PackedScene" uid="uid://bvpoooctjquuv" path="res://Zombie/zombie.tscn" id="5_1340d"]
+[ext_resource type="PackedScene" uid="uid://3ilm361hx0cp" path="res://Zombie/foot_soldier_zombie.tscn" id="5_j30j4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mmb3"]
 texture = ExtResource("1_7h17k")
@@ -2219,6 +2220,8 @@ shape = SubResource("RectangleShape2D_oxuvd")
 [node name="Gate" type="StaticBody2D" parent="TileMap/Room 1/Gates" groups=["Gate"]]
 position = Vector2(0, -1091)
 scale = Vector2(3, 3)
+collision_layer = 64
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Room 1/Gates/Gate"]
 shape = SubResource("RectangleShape2D_cvnh6")
@@ -2226,6 +2229,8 @@ one_way_collision = true
 
 [node name="Gate2" type="StaticBody2D" parent="TileMap/Room 1/Gates"]
 position = Vector2(1017, -1575)
+collision_layer = 64
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Room 1/Gates/Gate2"]
 position = Vector2(3.5, -8)
@@ -2233,6 +2238,8 @@ shape = SubResource("RectangleShape2D_lvm1t")
 
 [node name="Gate3" type="StaticBody2D" parent="TileMap/Room 1/Gates"]
 position = Vector2(-973, -1583)
+collision_layer = 64
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Room 1/Gates/Gate3"]
 position = Vector2(1, -1)
@@ -2240,12 +2247,17 @@ shape = SubResource("RectangleShape2D_xcn3c")
 
 [node name="Gate4" type="StaticBody2D" parent="TileMap/Room 1/Gates"]
 position = Vector2(0, -2071)
+collision_layer = 64
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Room 1/Gates/Gate4"]
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_6qhx3")
 
 [node name="Zombies" type="Node" parent="TileMap/Room 1"]
+
+[node name="Foot Soldier Zombie" parent="TileMap/Room 1/Zombies" instance=ExtResource("5_j30j4")]
+position = Vector2(-24, -1462)
 
 [node name="Zombie4" parent="TileMap/Room 1/Zombies" instance=ExtResource("5_1340d")]
 position = Vector2(-394, -1287)

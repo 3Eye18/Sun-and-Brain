@@ -1,27 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://3ilm361hx0cp"]
+[gd_scene load_steps=14 format=3 uid="uid://3ilm361hx0cp"]
 
 [ext_resource type="Script" path="res://Zombie/foot_soldier_zombie.gd" id="1_8i5x1"]
 [ext_resource type="PackedScene" uid="uid://c1jhlslgkegjc" path="res://Zombie/bullet.tscn" id="2_0gvb8"]
-[ext_resource type="PackedScene" uid="uid://5n1yvuc5xvcx" path="res://Player/Peashooter/peashooter_leg.tscn" id="2_hftcj"]
 [ext_resource type="Texture2D" uid="uid://b4s1txtfxqyad" path="res://Resource/2b8c74c0c35737217a4ef3d87e500457.png" id="2_vesqu"]
 [ext_resource type="Texture2D" uid="uid://d4oqj3x4txve" path="res://Resource/Paintball_Gun.png" id="3_lqpwn"]
+[ext_resource type="Script" path="res://State Machine/Gun/gun_idle.gd" id="5_74tfx"]
 [ext_resource type="Script" path="res://State Machine/state_machine.gd" id="6_3yytq"]
+[ext_resource type="Script" path="res://State Machine/Gun/gun_shoot.gd" id="6_15kpq"]
 [ext_resource type="Script" path="res://State Machine/Zombie/soldier_idle.gd" id="7_qy5e6"]
-[ext_resource type="Script" path="res://State Machine/Zombie/soldier_moving.gd" id="8_tjb1i"]
+[ext_resource type="Script" path="res://State Machine/Zombie/soldier_retreat.gd" id="8_tjb1i"]
+[ext_resource type="Script" path="res://State Machine/Zombie/soldier_advance.gd" id="10_4nadd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hpm61"]
 radius = 991.658
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmo5d"]
-radius = 542.015
+radius = 665.882
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35yob"]
 radius = 51.0392
 
 [node name="Foot Soldier Zombie" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+collision_mask = 100
 script = ExtResource("1_8i5x1")
-bullet_scene = ExtResource("2_0gvb8")
-target = ExtResource("2_hftcj")
 
 [node name="Shooting range" type="Area2D" parent="."]
 position = Vector2(28, 98)
@@ -55,12 +57,10 @@ texture = ExtResource("2_vesqu")
 position = Vector2(28, 98)
 shape = SubResource("CircleShape2D_35yob")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Gun" type="Area2D" parent="Marker2D"]
-position = Vector2(-114, 0)
+position = Vector2(114, 0)
 collision_mask = 108
 metadata/_edit_group_ = true
 
@@ -69,7 +69,23 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_lqpwn")
 
 [node name="Marker2D" type="Marker2D" parent="Marker2D/Gun"]
-position = Vector2(-63.5107, -0.620904)
+position = Vector2(63.511, 0.621)
+
+[node name="Shooting State Machine" type="Node" parent="Marker2D/Gun"]
+script = ExtResource("6_3yytq")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Marker2D/Gun/Shooting State Machine"]
+script = ExtResource("5_74tfx")
+
+[node name="Shoot" type="Node" parent="Marker2D/Gun/Shooting State Machine"]
+script = ExtResource("6_15kpq")
+bullet_scene = ExtResource("2_0gvb8")
+
+[node name="Timers" type="Node" parent="Marker2D/Gun"]
+
+[node name="Attack cooldown" type="Timer" parent="Marker2D/Gun/Timers"]
+one_shot = true
 
 [node name="Movement State Machine" type="Node" parent="."]
 script = ExtResource("6_3yytq")
@@ -78,12 +94,14 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="Movement State Machine"]
 script = ExtResource("7_qy5e6")
 
-[node name="Moving" type="Node" parent="Movement State Machine"]
+[node name="Retreat" type="Node" parent="Movement State Machine"]
 script = ExtResource("8_tjb1i")
 
-[node name="Timers" type="Node" parent="."]
-
-[node name="Attack cooldown" type="Timer" parent="Timers"]
+[node name="Advance" type="Node" parent="Movement State Machine"]
+script = ExtResource("10_4nadd")
 
 [connection signal="body_entered" from="Shooting range" to="." method="_on_shooting_range_body_entered"]
-[connection signal="timeout" from="Timers/Attack cooldown" to="." method="_on_timer_timeout"]
+[connection signal="body_exited" from="Shooting range" to="." method="_on_shooting_range_body_exited"]
+[connection signal="body_entered" from="Retreat range" to="." method="_on_retreat_range_body_entered"]
+[connection signal="body_exited" from="Retreat range" to="." method="_on_retreat_range_body_exited"]
+[connection signal="timeout" from="Marker2D/Gun/Timers/Attack cooldown" to="." method="_on_timer_timeout"]
